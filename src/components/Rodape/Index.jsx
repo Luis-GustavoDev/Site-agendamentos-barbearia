@@ -13,7 +13,7 @@ const Footer = styled.footer`
         color: var(--azul-medio);
         text-decoration: underline;
     }
-
+    
     @media (max-width: 516px) {
         font-size: 0.75rem;
     }
