@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "titulo": "Disfarçado",
+        "tempo": "40 minutos",
+        "preco": "35$"
+    },
+    {
+        "id": 2,
+        "titulo": "Americano",
+        "tempo": "40 minutos",
+        "preco": "35$"
+    },
+    {
+        "id": 3,
+        "titulo": "Moicano",
+        "tempo": "40 minutos",
+        "preco": "35$"
+    }
+]
