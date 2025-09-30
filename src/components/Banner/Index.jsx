@@ -14,10 +14,6 @@ const BannerEstilizado = styled.main`
         grid-template-columns: auto;
         padding: 0;
     }
-
-    @media (max-width: 1044px) {
-        grid-template-columns: auto;
-    }
 `
 const ContainerImagens = styled.section`
     height: 25.3rem;
