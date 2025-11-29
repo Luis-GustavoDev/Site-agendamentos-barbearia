@@ -1,4 +1,4 @@
-import PostLine from "components/Post_line/Index";
+import PostLine from "components/PostLine/Index";
 import { PaginaInicialContext } from "context/Inicial/PaginaInicialProvider";
 import { useContext } from "react";
 import styled from "styled-components";

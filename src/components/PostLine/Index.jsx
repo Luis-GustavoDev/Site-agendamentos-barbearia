@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Container = styled.section`
     width: 100%;
 `
-
 const Post = styled.div`
     display: grid;
     grid-template-columns: 12% auto;
@@ -12,13 +11,11 @@ const Post = styled.div`
     border-radius: 16px;
     cursor: pointer;
 `
-
 const Imagem = styled.img`
     max-width: 100%;
     border-radius: 16px 0 0 16px;
     object-fit: cover;
 `
-
 const Descricao = styled.h2`
     display: flex;
     text-align: center;
@@ -37,7 +34,6 @@ const Descricao = styled.h2`
         font-size: 1.5rem;
     }
 `
-
 const Button = styled.button`
     display: flex;
     align-items: center;

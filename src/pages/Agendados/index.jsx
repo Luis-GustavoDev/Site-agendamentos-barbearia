@@ -1,5 +1,5 @@
+import AgendadosPostLine from "components/AgendadosPostLine/Index"
 import { CardPost, Post } from "components/CortesPosts"
-import PostLine from "components/Post_line/Index"
 import Rodape from "components/Rodape/Index"
 import { useAgendados } from "hooks/useAgendados"
 import styled from "styled-components"
@@ -10,7 +10,6 @@ const Geral = styled.div`
     justify-content: space-between;
     height: 100vh;
 `
-
 const Header = styled.header`
     display: flex;
     justify-content: center;
@@ -24,17 +23,15 @@ const Agendados = () => {
 
     const { agendados } = useAgendados()
 
-    // Lembrar de corrigir as importações. Se são default ou não 
-
     return (
         <Geral>
             <Header>
                 <h1>Meus agendamentos</h1>
             </Header>
             <Post>
-                {agendados.map(info => (
+                {agendados.length === 0 ? <h1>Não há cortes agendados para hoje!</h1> : agendados.map(info => (
                     <CardPost key={info.id}>
-                        <PostLine post={info} />
+                        <AgendadosPostLine post={info} />
                     </CardPost>
                 ))}
             </Post>

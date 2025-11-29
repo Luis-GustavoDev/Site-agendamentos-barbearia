@@ -1,15 +1,15 @@
 import { AgendadosContext } from "context/Agendados/AgendadosProvider"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
-export const useAgendados = () => {
+export const useAgendados = () => { 
+
     const { agendados, setAgendados } = useContext(AgendadosContext)
+    const [ nome, setNome ] = useState("")
+    const [ horario, setHorario ] = useState(null)
+    const [ data, setData ] = useState(Date());
 
     function submeterFormulario(e) {
         e.preventDefault()
-    }
-
-    function resgatarInformacao(e) {
-        console.log(e.target.value)
     }
 
     function marcarHorario(novoCliente) {
@@ -17,20 +17,28 @@ export const useAgendados = () => {
         let novaLista = [...agendados]
         novaLista.push(novoCliente)
 
-        {
-            novaLista.map(a => {
-                delete a.tempo
-                delete a.preco
-            })
-        }
+        atualizarAgenda(novaLista)
 
         return setAgendados(novaLista)
+    }
+
+    function atualizarAgenda(novaLista) {
+        return novaLista.map(a => {
+            a.titulo = nome.toLowerCase()
+            a.tempo = horario
+            a.preco = data
+        })
     }
 
     return {
         agendados,
         submeterFormulario,
         marcarHorario,
-        resgatarInformacao
+        nome,
+        setNome,
+        horario,
+        setHorario,
+        data,
+        setData
     }
 }

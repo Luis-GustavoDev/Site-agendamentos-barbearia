@@ -28,8 +28,7 @@ const ModalZoom = () => {
     return (
         <>
             {/* open={!!postSelecionado} é um recurso técnico que quer dizer se há um objeto sendo passado (true), ou não (false)*/}
-            {/* {postSelecionado && ...} significa se postSelecionado está chegando como nulo, se sim, não exiba nada, caso contrário exiba o conteúdo,
-            pois não há como acessar os atributos de um valor null*/}
+            {/* {postSelecionado && ...} significa se postSelecionado está chegando como nulo, se sim, não exiba nada, caso contrário exiba o conteúdo, pois não há como acessar os atributos de um valor null*/}
             {postSelecionado && <>
                 <Overlay />
                 <Dialog open={!!postSelecionado}>

@@ -10,7 +10,7 @@ export const PaginaInicialProvider = ({ children }) => {
     const [postSelecionado, setPostSelecionado] = useState(null)
 
     return (
-        <PaginaInicialContext.Provider value={{ postsGaleria, postSelecionado, setPostSelecionado}}>
+        <PaginaInicialContext.Provider value={{ postsGaleria, postSelecionado, setPostSelecionado }}>
             {children}
         </PaginaInicialContext.Provider>
     )

@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 58% auto;
 
     @media (max-width: 1137px){
         grid-template-columns: 100%;
@@ -30,19 +30,23 @@ const InformeDados = styled.div`
     max-width: 100%;
     width: 90%;
 
-    @media (max-width: 720px) {
+    h2 {
+        line-height: 40px;
+        padding-bottom: 40px;
+        font-size: 35px;
+    }
+
+    @media (max-width: 964px) {
         h2{
             display: flex;
             text-align: center;
-            line-height: 30px;
-            padding-bottom: 60px;
-            font-size: 35px;
         }
     }
 `
 const Footer = styled.footer`
     display: flex;
     justify-content: end;
+    gap: 10px;
 
     button.cancelar{
         color: black;
@@ -76,7 +80,12 @@ const PostModal = ({ post, aoFechar }) => {
     const {
         marcarHorario,
         submeterFormulario,
-        resgatarInformacao,
+        nome,
+        setNome,
+        horario,
+        setHorario,
+        data,
+        setData
     } = useAgendados();
 
     const navegar = useNavigate("/agendados")
@@ -89,9 +98,31 @@ const PostModal = ({ post, aoFechar }) => {
                 <form method="dialog" onSubmit={submeterFormulario}>
                     <div>
                         <Campos>
-                            <InputFormulario type="text" name="agedamento" placeholder="Nome" onChange={resgatarInformacao} />
-                            <InputFormulario type="number" name="agedamento" placeholder="Horários" onChange={resgatarInformacao}/>
-                            <InputFormulario type="date" name="agedamento" onChange={resgatarInformacao}/>
+                            <InputFormulario
+                                required
+                                type="text"
+                                name="agedamento"
+                                placeholder="Nome"
+                                value={nome}
+                                onChange={(e) => setNome(e.target.value)}
+                            />
+
+                            <InputFormulario
+                                required
+                                type="number"
+                                name="agedamento"
+                                placeholder="Horários"
+                                value={horario}
+                                onChange={(e) => setHorario(e.target.value)}
+                            />
+
+                            <InputFormulario
+                                required
+                                type="date"
+                                name="agedamento"
+                                value={data}
+                                onChange={(e) => setData(e.target.value)}
+                            />
                         </Campos>
                     </div>
                     <Footer>
