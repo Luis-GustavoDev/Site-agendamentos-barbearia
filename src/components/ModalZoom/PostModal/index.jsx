@@ -1,5 +1,4 @@
 import { useAgendados } from "hooks/useAgendados"
-import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -80,15 +79,9 @@ const PostModal = ({ post, aoFechar }) => {
     const {
         marcarHorario,
         submeterFormulario,
-        nome,
-        setNome,
-        horario,
-        setHorario,
-        data,
-        setData
+        form,
+        aoDigitarCampoDoFormulario
     } = useAgendados();
-
-    const navegar = useNavigate("/agendados")
 
     return (
         <Container>
@@ -103,8 +96,8 @@ const PostModal = ({ post, aoFechar }) => {
                                 type="text"
                                 name="agedamento"
                                 placeholder="Nome"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                                value={form.nome}
+                                onChange={(e) => aoDigitarCampoDoFormulario( "nome", e.target.value)}
                             />
 
                             <InputFormulario
@@ -112,16 +105,16 @@ const PostModal = ({ post, aoFechar }) => {
                                 type="number"
                                 name="agedamento"
                                 placeholder="Horários"
-                                value={horario}
-                                onChange={(e) => setHorario(e.target.value)}
+                                value={form.horario}
+                                onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
                             />
 
                             <InputFormulario
                                 required
                                 type="date"
                                 name="agedamento"
-                                value={data}
-                                onChange={(e) => setData(e.target.value)}
+                                value={form.data}
+                                onChange={(e) => aoDigitarCampoDoFormulario("data", e.target.value)}
                             />
                         </Campos>
                     </div>
@@ -129,7 +122,7 @@ const PostModal = ({ post, aoFechar }) => {
                         <Botao className="cancelar" onClick={aoFechar}>
                             Cancelar
                         </Botao>
-                        <Botao onClick={() => { marcarHorario(post); navegar("/agendados") }}>
+                        <Botao onClick={() => marcarHorario(form, post.id)}>
                             Agendar
                         </Botao>
                     </Footer>

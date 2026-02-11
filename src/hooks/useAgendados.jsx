@@ -1,44 +1,55 @@
-import { AgendadosContext } from "context/Agendados/AgendadosProvider"
-import { useContext, useState } from "react"
+import { registrarClientes, resgatarClientes } from "api"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export const useAgendados = () => { 
+export const useAgendados = () => {
 
-    const { agendados, setAgendados } = useContext(AgendadosContext)
-    const [ nome, setNome ] = useState("")
-    const [ horario, setHorario ] = useState(null)
-    const [ data, setData ] = useState(Date());
+    const navegar = useNavigate()
 
-    function submeterFormulario(e) {
+    const [agendados, setAgendados] = useState([])
+
+    const [form, setForm] = useState(({
+        id: Number,
+        nome: "",
+        horario: null,
+        data: Date()
+    }))
+
+    const aoDigitarCampoDoFormulario = (campo, valor) => {
+        setForm((prev) => ({ ...prev, [campo]: valor }))
+    }
+
+    const submeterFormulario = (e) => {
         e.preventDefault()
+        navegar("/agendados")
     }
 
-    function marcarHorario(novoCliente) {
-
-        let novaLista = [...agendados]
-        novaLista.push(novoCliente)
-
-        atualizarAgenda(novaLista)
-
-        return setAgendados(novaLista)
-    }
-
-    function atualizarAgenda(novaLista) {
-        return novaLista.map(a => {
-            a.titulo = nome.toLowerCase()
-            a.tempo = horario
-            a.preco = data
+    const marcarHorario = (cliente, idCorte) => {
+        const novoCliente = ({
+            ...cliente,
+            id: idCorte
         })
+        registrarClientes(novoCliente)
     }
+
+    const carregarDados = async () => {
+        try {
+            const verificar = await resgatarClientes()
+            setAgendados(verificar)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect( () => {
+        carregarDados()
+    }, [])
 
     return {
         agendados,
+        form,
         submeterFormulario,
         marcarHorario,
-        nome,
-        setNome,
-        horario,
-        setHorario,
-        data,
-        setData
+        aoDigitarCampoDoFormulario
     }
 }

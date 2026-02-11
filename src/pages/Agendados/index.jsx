@@ -1,7 +1,9 @@
+// import { resgatarClientes } from "api"
 import AgendadosPostLine from "components/AgendadosPostLine/Index"
 import { CardPost, Post } from "components/CortesPosts"
 import Rodape from "components/Rodape/Index"
 import { useAgendados } from "hooks/useAgendados"
+import { useEffect } from "react"
 import styled from "styled-components"
 
 const Geral = styled.div`

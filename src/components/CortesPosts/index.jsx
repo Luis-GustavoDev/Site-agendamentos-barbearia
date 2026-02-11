@@ -22,7 +22,7 @@ const CortesPosts = () => {
 
     const {
         postsGaleria,
-        setPostSelecionado
+        setPostSelecionado,
     } = useContext(PaginaInicialContext);
 
     return (
