@@ -1,3 +1,4 @@
+import { useAgendados } from "context/HookAgendados/useAgendados";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -21,7 +22,6 @@ const Descricao = styled.h3`
     text-align: center;
     align-items: center;
     justify-content: space-around;
-    gap: 20px;
     font-size: 40px;
     color: var(--cor-fonte-principal);
     
@@ -34,8 +34,15 @@ const Descricao = styled.h3`
         font-size: 1.5rem;
     }
 `
+const formataData = (data) => {
+    const [ano, mes, dia] = data.split("-")
+    return `${dia}/${mes}/${ano}`
+}
 
 const AgendadosPostLine = ({ post }) => {
+
+    const { removerDados } = useAgendados()
+
     return (
         <Container>
             <Post>
@@ -43,7 +50,8 @@ const AgendadosPostLine = ({ post }) => {
                 <Descricao>
                     <div>{post.nome}</div>
                     <div>{post.horario + "h"}</div>
-                    <div>{post.data}</div>
+                    <div>{formataData(post.data)}</div>
+                    <i className="far fa-times-circle" onClick={() => removerDados(post.id)} />
                 </Descricao>
             </Post>
         </Container>

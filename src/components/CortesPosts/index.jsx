@@ -17,23 +17,16 @@ export const CardPost = styled.li`
        width: 90%;
     }
 `
-
 const CortesPosts = () => {
 
-    const {
-        postsGaleria,
-        setPostSelecionado,
-    } = useContext(PaginaInicialContext);
+    const { postsGaleria } = useContext(PaginaInicialContext);
 
     return (
-        <main>
+        <main>  
             <Post>
                 {postsGaleria.map((post) => (
-                    <CardPost key={post}>
-                        <PostLine
-                            post={post}
-                            onCorteSelecionado={setPostSelecionado}
-                        />
+                    <CardPost>
+                        <PostLine post={post} />
                     </CardPost>
                 ))}
             </Post>

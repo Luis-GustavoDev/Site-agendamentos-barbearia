@@ -18,3 +18,8 @@ export const resgatarClientes = async () => {
   const { data } = await api.get("/clientes")
   return data
 }
+
+export const removerCliente = async (cliente) => {
+  const { data } = await api.delete(`clientes/${cliente}`)
+  return data
+}

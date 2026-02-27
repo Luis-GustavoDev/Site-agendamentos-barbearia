@@ -40,7 +40,7 @@ const DescricaoBanner = () => {
     return (
         <ContainerDescricao>
             <Titulo>Bem-vindo ao site da melhor barbearia de jequitaí!</Titulo>
-            
+
             <Localizacao>
                 Rua: Exemplo | Numero: Exemplo | Bairro: Exemplo <br />
             </Localizacao>

@@ -1,9 +1,7 @@
-// import { resgatarClientes } from "api"
 import AgendadosPostLine from "components/AgendadosPostLine/Index"
 import { CardPost, Post } from "components/CortesPosts"
 import Rodape from "components/Rodape/Index"
-import { useAgendados } from "hooks/useAgendados"
-import { useEffect } from "react"
+import { useAgendados } from "context/HookAgendados/useAgendados"
 import styled from "styled-components"
 
 const Geral = styled.div`
@@ -31,9 +29,9 @@ const Agendados = () => {
                 <h1>Meus agendamentos</h1>
             </Header>
             <Post>
-                {agendados.length === 0 ? <h1>Não há cortes agendados para hoje!</h1> : agendados.map(info => (
-                    <CardPost key={info.id}>
-                        <AgendadosPostLine post={info} />
+                {agendados.length === 0 ? <h1>Não há cortes agendados para hoje!</h1> : agendados.map(cliente => (
+                    <CardPost key={cliente.id}>
+                        <AgendadosPostLine post={cliente} />
                     </CardPost>
                 ))}
             </Post>

@@ -1,4 +1,4 @@
-import { registrarClientes, resgatarClientes } from "api"
+import { registrarClientes, removerCliente, resgatarClientes } from "api"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -41,7 +41,15 @@ export const useAgendados = () => {
         }
     }
 
-    useEffect( () => {
+    const removerDados = async (cliente) => {
+        try {
+            removerCliente(cliente)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
         carregarDados()
     }, [])
 
@@ -50,6 +58,7 @@ export const useAgendados = () => {
         form,
         submeterFormulario,
         marcarHorario,
+        removerDados,
         aoDigitarCampoDoFormulario
     }
 }

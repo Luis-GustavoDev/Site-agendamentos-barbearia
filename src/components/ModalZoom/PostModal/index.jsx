@@ -1,4 +1,4 @@
-import { useAgendados } from "hooks/useAgendados"
+import { useAgendados } from "context/HookAgendados/useAgendados"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -53,7 +53,7 @@ const Footer = styled.footer`
         border: none;
     }
 `
-const Campos = styled.div`
+const Campos = styled.form`
     display: flex;
     gap: 10px;
     width: 100%;
@@ -88,36 +88,32 @@ const PostModal = ({ post, aoFechar }) => {
             <Imagem src={`/assets/posts/${post.id}/capa.png`} />
             <InformeDados>
                 <h2>Finalize seu atendimento!</h2>
-                <form method="dialog" onSubmit={submeterFormulario}>
-                    <div>
-                        <Campos>
-                            <InputFormulario
-                                required
-                                type="text"
-                                name="agedamento"
-                                placeholder="Nome"
-                                value={form.nome}
-                                onChange={(e) => aoDigitarCampoDoFormulario( "nome", e.target.value)}
-                            />
+                <Campos method="dialog" onSubmit={submeterFormulario}>
+                    <InputFormulario
+                        required
+                        type="text"
+                        name="agedamento"
+                        placeholder="Nome"
+                        value={form.nome}
+                        onChange={(e) => aoDigitarCampoDoFormulario("nome", e.target.value)}
+                    />
 
-                            <InputFormulario
-                                required
-                                type="number"
-                                name="agedamento"
-                                placeholder="Horários"
-                                value={form.horario}
-                                onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
-                            />
+                    <InputFormulario
+                        required
+                        type="time"
+                        name="agedamento"
+                        placeholder="Horários"
+                        value={form.horario}
+                        onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
+                    />
 
-                            <InputFormulario
-                                required
-                                type="date"
-                                name="agedamento"
-                                value={form.data}
-                                onChange={(e) => aoDigitarCampoDoFormulario("data", e.target.value)}
-                            />
-                        </Campos>
-                    </div>
+                    <InputFormulario
+                        required
+                        type="date"
+                        name="agedamento"
+                        value={form.data}
+                        onChange={(e) => aoDigitarCampoDoFormulario("data", e.target.value)}
+                    />
                     <Footer>
                         <Botao className="cancelar" onClick={aoFechar}>
                             Cancelar
@@ -126,7 +122,7 @@ const PostModal = ({ post, aoFechar }) => {
                             Agendar
                         </Botao>
                     </Footer>
-                </form>
+                </Campos>
             </InformeDados>
         </Container>
     )

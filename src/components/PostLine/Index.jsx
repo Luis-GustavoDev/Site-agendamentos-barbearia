@@ -1,3 +1,5 @@
+import { PaginaInicialContext } from "context/Inicial/PaginaInicialProvider";
+import { useContext } from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -33,6 +35,10 @@ const Descricao = styled.h2`
         line-height: 20px;
         font-size: 1.5rem;
     }
+
+    @media (max-width: 466px) {
+        font-size: 18px;
+    }
 `
 const Button = styled.button`
     display: flex;
@@ -55,10 +61,12 @@ const Button = styled.button`
     }
 `
 
-const PostLine = ({ post, onCorteSelecionado }) => {
+const PostLine = ({ post }) => {
+
+    const { setPostSelecionado } = useContext(PaginaInicialContext);
 
     return (
-        <Container onClick={() => onCorteSelecionado(post)}>
+        <Container onClick={() => setPostSelecionado(post)}>
             <Post>
                 <Imagem src={`assets/posts/${post.id}/capa.png`} />
                 <Descricao>
