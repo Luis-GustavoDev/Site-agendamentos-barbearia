@@ -3,8 +3,8 @@ Aplicação web feita com React para agendamento de horários, a fim de automati
 
 ## 📦 Funcionalidades planejadas
 - [ ] Capturar informações dos clientes
-- [ ] Mostrar ao barbeiro os clientes agendados
-- [ ] Cadastrar usuários
+- [X] Mostrar ao barbeiro os clientes agendados
+- [X] Cadastrar usuários
 
 ## 📸 Prévia (se tiver)
-[Link pro projeto rodando: site de agendamentos para barbearias (verce)](https://site-agendamentos-barbearia.vercel.app/)
+[Link pro projeto rodando: site de agendamentos para barbearias (vercel)](https://site-agendamentos-barbearia.vercel.app/)
