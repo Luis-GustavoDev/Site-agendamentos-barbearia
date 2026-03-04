@@ -29,7 +29,7 @@ const Agendados = () => {
                 <h1>Meus agendamentos</h1>
             </Header>
             <Post>
-                {agendados.length === 0 ? <h1>Não há cortes agendados para hoje!</h1> : agendados.map(cliente => (
+                {!agendados.length ? <h1>Não há cortes agendados para hoje!</h1> : agendados.map(cliente => (
                     <CardPost key={cliente.id}>
                         <AgendadosPostLine post={cliente} />
                     </CardPost>

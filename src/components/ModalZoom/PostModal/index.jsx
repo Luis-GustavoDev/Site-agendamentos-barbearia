@@ -1,9 +1,16 @@
 import { useAgendados } from "context/HookAgendados/useAgendados"
+import { PaginaInicialContext } from "context/Inicial/PaginaInicialProvider"
+import { useContext } from "react"
 import styled from "styled-components"
+import check from "imagens/icons/iconCheck.png"
 
 const Container = styled.div`
     display: grid;
     grid-template-columns: 58% auto;
+
+    img.true {
+        display: none;
+    }
 
     @media (max-width: 1137px){
         grid-template-columns: 100%;
@@ -17,6 +24,7 @@ const Imagem = styled.img`
     @media (max-width: 1137px){
         display: none;
     }
+
 `
 const InformeDados = styled.div`
     display: flex;
@@ -74,57 +82,77 @@ const Botao = styled.button`
     cursor: pointer;
 `
 
-const PostModal = ({ post, aoFechar }) => {
+const PostModal = () => {
 
     const {
         marcarHorario,
         submeterFormulario,
         form,
-        aoDigitarCampoDoFormulario
+        aoDigitarCampoDoFormulario,
+        submitado
     } = useAgendados();
 
+    const { 
+        setPostSelecionado,
+        postSelecionado } = useContext(PaginaInicialContext)
+
     return (
-        <Container>
-            <Imagem src={`/assets/posts/${post.id}/capa.png`} />
-            <InformeDados>
-                <h2>Finalize seu atendimento!</h2>
-                <Campos method="dialog" onSubmit={submeterFormulario}>
-                    <InputFormulario
-                        required
-                        type="text"
-                        name="agedamento"
-                        placeholder="Nome"
-                        value={form.nome}
-                        onChange={(e) => aoDigitarCampoDoFormulario("nome", e.target.value)}
-                    />
+        <>
+            {!submitado ? (
+                <Container>
+                    <Imagem src={`/assets/posts/${postSelecionado.id}/capa.png`} />
+                    <InformeDados>
+                        <h2>Finalize seu atendimento!</h2>
+                        <Campos method="dialog" onSubmit={submeterFormulario}>
+                            <InputFormulario
+                                type="text"
+                                name="agedamento"
+                                placeholder="Nome"
+                                value={form.nome}
+                                onChange={(e) => aoDigitarCampoDoFormulario("nome", e.target.value)}
+                                required
+                            />
 
-                    <InputFormulario
-                        required
-                        type="time"
-                        name="agedamento"
-                        placeholder="Horários"
-                        value={form.horario}
-                        onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
-                    />
+                            <InputFormulario
+                                type="time"
+                                name="agedamento"
+                                placeholder="Horários"
+                                value={form.horario}
+                                onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
+                                required
+                            />
 
-                    <InputFormulario
-                        required
-                        type="date"
-                        name="agedamento"
-                        value={form.data}
-                        onChange={(e) => aoDigitarCampoDoFormulario("data", e.target.value)}
-                    />
-                    <Footer>
-                        <Botao className="cancelar" onClick={aoFechar}>
-                            Cancelar
-                        </Botao>
-                        <Botao onClick={() => marcarHorario(form, post.id)}>
-                            Agendar
-                        </Botao>
-                    </Footer>
-                </Campos>
-            </InformeDados>
-        </Container>
+                            <InputFormulario
+                                type="date"
+                                name="agedamento"
+                                value={form.data}
+                                onChange={(e) => aoDigitarCampoDoFormulario("data", e.target.value)}
+                                required
+                            />
+
+                            <Footer>
+                                <Botao className="cancelar" onClick={() => setPostSelecionado(null)}>
+                                    Cancelar
+                                </Botao>
+                                <Botao onClick={() => marcarHorario(form, postSelecionado.id)}>
+                                    Agendar
+                                </Botao>
+                            </Footer>
+                        </Campos>
+                    </InformeDados>
+                </Container>
+            ) : (
+                <Container>
+                    <Imagem className={submitado} src={`/assets/posts/${postSelecionado.id}/capa.png`} />
+                    <svg viewBox="0 0 100 100">
+                     <circle cx={50} cy={50} r={45} fill="#22c55e" opacity={0.2}/>
+                     <circle cx={50} cy={50} r={35} fill="#22c55e" />
+                     <img src={check}  alt="icon de confirmação" style={{zIndex: 0}}/> 
+                    </svg>
+                </Container>
+            )
+            }
+        </>
     )
 }
 

@@ -24,7 +24,12 @@ export const PaginaInicialProvider = ({ children }) => {
     }
 
     return (
-        <PaginaInicialContext.Provider value={{ postsGaleria, postSelecionado, setPostGaleria, setPostSelecionado }}>
+        <PaginaInicialContext.Provider value={{
+            postsGaleria,
+            postSelecionado,
+            setPostGaleria,
+            setPostSelecionado
+        }}>
             {children}
         </PaginaInicialContext.Provider>
     )

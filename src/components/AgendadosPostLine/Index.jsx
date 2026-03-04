@@ -1,5 +1,6 @@
 import { useAgendados } from "context/HookAgendados/useAgendados";
 import styled from "styled-components";
+import close from "imagens/icons/iconClose.png"
 
 const Container = styled.section`
     width: 100%;
@@ -17,13 +18,17 @@ const Imagem = styled.img`
     border-radius: 16px 0 0 16px;
     object-fit: cover;
 `
-const Descricao = styled.h3`
+const Descricao = styled.div`
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: space-around;
     font-size: 40px;
     color: var(--cor-fonte-principal);
+
+    img {
+        width: 40px;
+    }
     
     @media (max-width: 1285px){
         font-size: 35px;
@@ -46,12 +51,12 @@ const AgendadosPostLine = ({ post }) => {
     return (
         <Container>
             <Post>
-                <Imagem src={`assets/posts/${post.id}/capa.png`} />
+                <Imagem src={`assets/posts/${post.idCorte}/capa.png`} />
                 <Descricao>
-                    <div>{post.nome}</div>
-                    <div>{post.horario + "h"}</div>
-                    <div>{formataData(post.data)}</div>
-                    <i className="far fa-times-circle" onClick={() => removerDados(post.id)} />
+                    <h3>{post.nome}</h3>
+                    <h3>{post.horario + "h"}</h3>
+                    <h3>{formataData(post.data)}</h3>
+                    <img src={close} alt="fechar" onClick={() => removerDados(post.id)} />
                 </Descricao>
             </Post>
         </Container>

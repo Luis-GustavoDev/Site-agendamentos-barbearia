@@ -25,7 +25,7 @@ const CortesPosts = () => {
         <main>  
             <Post>
                 {postsGaleria.map((post) => (
-                    <CardPost>
+                    <CardPost key={post.id}>
                         <PostLine post={post} />
                     </CardPost>
                 ))}

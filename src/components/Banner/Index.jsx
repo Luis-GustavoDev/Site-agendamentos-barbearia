@@ -1,4 +1,4 @@
-import logo from "assert/LogoBarbearia.png";
+import logo from "imagens/LogoBarbearia.png";
 import styled from "styled-components";
 import DescricaoBanner from "./DescricaoBanner";
 
@@ -38,7 +38,7 @@ const Banner = () => {
     return (
         <BannerEstilizado>
             <ContainerImagens>
-                <LogoBarbearia src={logo} alt="foto do barbeiro" />
+                <LogoBarbearia src={logo} alt="logo da barbearia" />
             </ContainerImagens>
             <DescricaoBanner />
         </BannerEstilizado>

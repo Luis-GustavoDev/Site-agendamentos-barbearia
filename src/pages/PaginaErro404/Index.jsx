@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import imagemErro from "assert/erro_404.png"
+import imagemErro from "imagens/erro_404.png"
 import styled from "styled-components";
 
 const Container = styled.div`

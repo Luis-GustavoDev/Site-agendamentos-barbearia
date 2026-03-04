@@ -1,18 +1,16 @@
 import { registrarClientes, removerCliente, resgatarClientes } from "api"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 
 export const useAgendados = () => {
 
-    const navegar = useNavigate()
-
     const [agendados, setAgendados] = useState([])
+    const [submitado, setSubmitado] = useState(null)
 
     const [form, setForm] = useState(({
         id: Number,
         nome: "",
         horario: null,
-        data: Date()
+        data: null
     }))
 
     const aoDigitarCampoDoFormulario = (campo, valor) => {
@@ -21,13 +19,14 @@ export const useAgendados = () => {
 
     const submeterFormulario = (e) => {
         e.preventDefault()
-        navegar("/agendados")
+
+        setSubmitado(true)
     }
 
     const marcarHorario = (cliente, idCorte) => {
         const novoCliente = ({
             ...cliente,
-            id: idCorte
+            idCorte: idCorte
         })
         registrarClientes(novoCliente)
     }
@@ -44,14 +43,15 @@ export const useAgendados = () => {
     const removerDados = async (cliente) => {
         try {
             removerCliente(cliente)
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error)
         }
     }
 
     useEffect(() => {
         carregarDados()
-    }, [])
+    }, [agendados])
 
     return {
         agendados,
@@ -59,6 +59,7 @@ export const useAgendados = () => {
         submeterFormulario,
         marcarHorario,
         removerDados,
-        aoDigitarCampoDoFormulario
+        aoDigitarCampoDoFormulario,
+        submitado
     }
 }

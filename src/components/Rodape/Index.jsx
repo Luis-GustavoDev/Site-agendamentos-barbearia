@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { ReactComponent as MarcaRegistrada } from "assert/marca_registrada.svg"
+import { ReactComponent as MarcaRegistrada } from "imagens/marca_registrada.svg"
 
 const Footer = styled.footer`
     display: flex;
