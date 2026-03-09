@@ -6,7 +6,7 @@ const Footer = styled.footer`
     justify-content: center;
     align-items: center;
     color: var(--branco);
-    background-color: var(--cor-fonte-principal);
+    background-color: var(--azul-forte);
     padding: 2rem 0;
 
     a {

@@ -7,7 +7,7 @@ const BannerEstilizado = styled.main`
     max-width: 100%;
     grid-template-columns: 50% 50%;
     padding: 3rem 7.25rem 6.25rem;
-    background-color: var(--cor-fonte-principal);
+    background-color: var(--azul-forte);
     color: var(--branco);
 
     @media (max-width: 870px) {
@@ -20,6 +20,7 @@ const ContainerImagens = styled.section`
     display: flex;
     align-items: center;
     justify-content: end;
+    box-sizing: border-box;
 
     @media (max-width: 870px) {
         height: 20%;

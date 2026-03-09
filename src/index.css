@@ -6,7 +6,7 @@
 
 :root {
   --azul-medio: #1875E8;
-  --cor-fonte-principal: #041833;
+  --azul-forte: #041833;
   --branco: #ffffff;
   --fonte-principal: 'Raleway', sans-serif;
   --fonte-secundaria: 'Playfair Display', sans-serif;
@@ -14,7 +14,10 @@
   font-family: var(--fonte-principal);
 }
 
-a, button, input, textarea {
+a,
+button,
+input,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -31,7 +34,9 @@ li {
   list-style: none;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   line-height: 5rem;
 }

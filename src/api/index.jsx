@@ -23,3 +23,8 @@ export const removerCliente = async (cliente) => {
   const { data } = await api.delete(`clientes/${cliente}`)
   return data
 }
+
+export const resgatarHorarios = async () => {
+  const { data } = await api.get("/agenda")
+  return data
+}

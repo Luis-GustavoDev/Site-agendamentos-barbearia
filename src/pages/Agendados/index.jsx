@@ -1,7 +1,7 @@
 import AgendadosPostLine from "components/AgendadosPostLine/Index"
 import { CardPost, Post } from "components/CortesPosts"
 import Rodape from "components/Rodape/Index"
-import { useAgendados } from "context/HookAgendados/useAgendados"
+import { useAgendados } from "context/Hooks/useAgendados"
 import styled from "styled-components"
 
 const Geral = styled.div`
@@ -14,7 +14,7 @@ const Header = styled.header`
     display: flex;
     justify-content: center;
     max-width: 100%;
-    background-color: var(--cor-fonte-principal);
+    background-color: var(--azul-forte);
     color: var(--azul-medio);
     padding: 10px;
 `

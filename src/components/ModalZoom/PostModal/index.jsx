@@ -1,4 +1,4 @@
-import { useAgendados } from "context/HookAgendados/useAgendados"
+import { useAgendados } from "context/Hooks/useAgendados"
 import { PaginaInicialContext } from "context/Inicial/PaginaInicialProvider"
 import { useContext } from "react"
 import styled from "styled-components"
@@ -8,16 +8,25 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 58% auto;
 
-    img.true {
-        display: none;
-    }
-
     @media (max-width: 1137px){
         grid-template-columns: 100%;
     }
 `
+const ContainerSVG = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    svg {
+        width: 50%
+    }
+
+    h1 {
+        color: var(--azul-medio);
+    }
+`
 const Imagem = styled.img`
-    background-color: black;
     width: 100%;
     border-radius: 12px 0 0 12px;
 
@@ -31,7 +40,7 @@ const InformeDados = styled.div`
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    color: var(--cor-fonte-principal);
+    color: var(--azul-forte);
     padding-left: 10px;
     height: 500px;
     max-width: 100%;
@@ -61,25 +70,29 @@ const Footer = styled.footer`
         border: none;
     }
 `
-const Campos = styled.form`
+const Form = styled.form`
     display: flex;
     gap: 10px;
     width: 100%;
     flex-direction: column;
     justify-content: space-around;
-`
-const InputFormulario = styled.input`
-    border: none;
-    border-bottom: 2px solid;
-    padding: 5px 10px;
+
+    input, select {
+        border: none;
+        border-bottom: 2px solid;
+        padding: 5px 10px;
+    }
 `
 const Botao = styled.button`
-    background-color: var(--cor-fonte-principal);
+    background-color: var(--azul-forte);
     color: var(--branco);
     border-radius: 16px;
     padding: 6px 8px;
     margin: 15px 0;
     cursor: pointer;
+`
+const CampoSelect = styled.select`
+    
 `
 
 const PostModal = () => {
@@ -89,10 +102,11 @@ const PostModal = () => {
         submeterFormulario,
         form,
         aoDigitarCampoDoFormulario,
-        submitado
+        submitado,
+        horarios
     } = useAgendados();
 
-    const { 
+    const {
         setPostSelecionado,
         postSelecionado } = useContext(PaginaInicialContext)
 
@@ -103,8 +117,8 @@ const PostModal = () => {
                     <Imagem src={`/assets/posts/${postSelecionado.id}/capa.png`} />
                     <InformeDados>
                         <h2>Finalize seu atendimento!</h2>
-                        <Campos method="dialog" onSubmit={submeterFormulario}>
-                            <InputFormulario
+                        <Form method="dialog" onSubmit={submeterFormulario}>
+                            <input
                                 type="text"
                                 name="agedamento"
                                 placeholder="Nome"
@@ -113,16 +127,19 @@ const PostModal = () => {
                                 required
                             />
 
-                            <InputFormulario
-                                type="time"
-                                name="agedamento"
-                                placeholder="Horários"
-                                value={form.horario}
+                            <CampoSelect
+                                name="Horarios"
                                 onChange={(e) => aoDigitarCampoDoFormulario("horario", e.target.value)}
                                 required
-                            />
+                            >
+                                <option key={"vazia"} value={null}>Horarios</option>
+                                {horarios.map((e) => (
+                                    <option key={e} value={e}>{e}</option>
+                                ))}
 
-                            <InputFormulario
+                            </CampoSelect>
+
+                            <input
                                 type="date"
                                 name="agedamento"
                                 value={form.data}
@@ -138,18 +155,22 @@ const PostModal = () => {
                                     Agendar
                                 </Botao>
                             </Footer>
-                        </Campos>
+                        </Form>
                     </InformeDados>
                 </Container>
             ) : (
-                <Container>
-                    <Imagem className={submitado} src={`/assets/posts/${postSelecionado.id}/capa.png`} />
-                    <svg viewBox="0 0 100 100">
-                     <circle cx={50} cy={50} r={45} fill="#22c55e" opacity={0.2}/>
-                     <circle cx={50} cy={50} r={35} fill="#22c55e" />
-                     <img src={check}  alt="icon de confirmação" style={{zIndex: 0}}/> 
+                <ContainerSVG className="svg">
+                    <h1>Horário agendado</h1>
+                    <svg viewBox="0 23 100 55">
+                        <circle cx={50} cy={50} r={25} fill="#041833" opacity={0.2} />
+                        <circle cx={50} cy={50} r={15} fill="#1875E8" />
+                        <image x={42} y={42} href={check} style={{ width: "15px" }} />
                     </svg>
-                </Container>
+
+                    <Botao onClick={() => setPostSelecionado(null)}>
+                        voltar
+                    </Botao>
+                </ContainerSVG>
             )
             }
         </>

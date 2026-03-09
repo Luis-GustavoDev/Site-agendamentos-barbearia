@@ -1,4 +1,4 @@
-import { useAgendados } from "context/HookAgendados/useAgendados";
+import { useAgendados } from "context/Hooks/useAgendados";
 import styled from "styled-components";
 import close from "imagens/icons/iconClose.png"
 
@@ -24,7 +24,7 @@ const Descricao = styled.div`
     align-items: center;
     justify-content: space-around;
     font-size: 40px;
-    color: var(--cor-fonte-principal);
+    color: var(--azul-forte);
 
     img {
         width: 40px;

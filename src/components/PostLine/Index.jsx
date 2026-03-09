@@ -25,7 +25,7 @@ const Descricao = styled.h2`
     justify-content: space-around;
     gap: 20px;
     font-size: 40px;
-    color: var(--cor-fonte-principal);
+    color: var(--azul-forte);
     
     @media (max-width: 1285px){
         font-size: 35px;

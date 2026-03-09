@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Container = styled.div`
     position: relative;
     padding: 3rem 8rem 8rem 8rem;
-    background-color: var(--cor-fonte-principal);
+    background-color: var(--azul-forte);
     color: var(--branco);
     text-align: center;
 

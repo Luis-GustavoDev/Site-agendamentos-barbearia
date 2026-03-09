@@ -9,19 +9,18 @@ export const PaginaInicialProvider = ({ children }) => {
     const [postsGaleria, setPostGaleria] = useState([])
     const [postSelecionado, setPostSelecionado] = useState(null)
 
-    try {
-        const obterCortes = async () => {
+    const obterCortes = async () => {
+        try {
             const response = await resgatarCortes()
             setPostGaleria(response)
+        } catch (error) {
+            console.log(error)
         }
-
-        useEffect(() => {
-            obterCortes()
-        }, [])
-
-    } catch (error) {
-        console.log(error)
     }
+
+    useEffect(() => {
+        obterCortes()
+    }, [])
 
     return (
         <PaginaInicialContext.Provider value={{

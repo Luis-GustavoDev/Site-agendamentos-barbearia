@@ -21,11 +21,68 @@
   ],
   "clientes": [
     {
-      "id": "87f3",
-      "nome": "",
-      "horario": null,
-      "data": null,
+      "id": "0924",
+      "nome": "luis",
+      "horario": "09:00",
+      "data": "2026-03-05",
+      "idCorte": "1"
+    },
+    {
+      "id": "16d0",
+      "nome": "antonio",
+      "horario": "18:00",
+      "data": "2026-03-11",
+      "idCorte": "2"
+    },
+    {
+      "id": "51b2",
+      "nome": "miguel",
+      "horario": "16:00",
+      "data": "2026-03-17",
+      "idCorte": "1"
+    },
+    {
+      "id": "7c9b",
+      "nome": "miguel",
+      "horario": "16:00",
+      "data": "2026-03-12",
+      "idCorte": "2"
+    },
+    {
+      "id": "52ff",
+      "nome": "antonio",
+      "horario": "12:00",
+      "data": "2026-03-12",
+      "idCorte": "2"
+    },
+    {
+      "id": "84b4",
+      "nome": "Luis",
+      "horario": "16:00",
+      "data": "2026-03-18",
+      "idCorte": "1"
+    },
+    {
+      "id": "89ae",
+      "nome": "luis",
+      "horario": "12:00",
+      "data": "2026-03-04",
+      "idCorte": "2"
+    },
+    {
+      "id": "47a4",
+      "nome": "Luis",
+      "horario": "18:00",
+      "data": "2026-03-11",
       "idCorte": "2"
     }
-  ]
+  ],
+  "agenda": {
+    "horarios": [
+      "09:00",
+      "12:00",
+      "16:00",
+      "18:00"
+    ]
+  }
 }
